@@ -104,3 +104,13 @@ body {
     background-position: 0 -288px;
   }
 }
+
+.bubble{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  right: 80px;
+  background-color: aquamarine;
+}
+

@@ -5,6 +5,10 @@
   var rsg = document.getElementsByClassName("rsg")[0];
   var resultMsg = document.getElementsByClassName("result")[0];
   var timerMsg = document.getElementsByClassName("timer")[0];
+  var r= Math.floor((Math.random()*255)+1);
+  var b= Math.floor((Math.random()*255)+1);
+  var g= Math.floor((Math.random()*255)+1);
+  
 
   let goalLine = document.getElementsByClassName("crossing-line")[0];
   let targetLeft = goalLine.offsetLeft;
@@ -20,7 +24,7 @@
     "You're slower than a slow cooker",
     "You're slower than a 1 legged dog on tranquilizers",
     "You're slower than Daenerys Targaryen on her way to Westeros",
-    "You gotta get those fingers to the gym asap my nigga! You too slow!",
+    "You gotta get those fingers to the gym asap! You're too slow!",
     "You've got some supreme slownest in those fingers son! You gotta do some finger cardio!",
     "You've got limitted edition slow fingers! go claim your Ginnes record!",
   ]
@@ -29,6 +33,27 @@
     timer = setInterval(checkIfWin, 100);
   }
   
+  function moveBubble(){
+    var bubble = document.getElementsByClassName('bubble')[0];
+    let color = (r,b,g,0.2);
+    bubble.style.top= Math.floor((Math.random()*100)+1) + "vh";
+    bubble.style.backgroundImage= color;
+    console.log(r,b,g);
+
+    var keyframes =[
+      {backgroundPosition: "right 20%"},
+      {backgroundPosition: "left -50%"}
+    ];
+
+    var timing ={
+      duration:750,
+      iterations: Infinity
+    };
+
+    var bubbleMove = document.getElementsByClassName("bubbles").animate(keyframes, timing);
+  }
+
+
   function checkIfWin () {
       if (count >= 1000 && count < 2000) {
         rsg.innerHTML = 'READY';
@@ -40,7 +65,7 @@
         rsg.innerHTML = '';
       }
 
-      if (time >= 13000 && !result) {
+      if (time >= 30000 && !result) {
         result = 'lost';
         stop();
         showResult(jokes[Math.floor(Math.random() * 10)], 'joke');
@@ -141,4 +166,5 @@ var readyFunc = function() {
   initialize();
 };
 
+moveBubble();
 document.addEventListener("DOMContentLoaded", readyFunc);
